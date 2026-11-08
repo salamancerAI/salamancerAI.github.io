@@ -1,0 +1,60 @@
+name: Build and deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  # Pinned Hugo (extended). Both values MUST be set; the build refuses to run on placeholders.
+  HUGO_VERSION: "UNSET"
+  HUGO_SHA256: "UNSET"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Hugo pin
+        run: |
+          if [ "$HUGO_VERSION" = "UNSET" ] || [ "$HUGO_SHA256" = "UNSET" ]; then
+            echo "Hugo version/checksum not pinned yet" >&2; exit 1
+          fi
+      - uses: actions/checkout@v4
+      - name: Install Hugo (pinned, checksum-verified)
+        run: |
+          f="hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+          curl -fsSL -o "$RUNNER_TEMP/$f" "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/$f"
+          echo "${HUGO_SHA256}  $RUNNER_TEMP/$f" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/hugo" && tar -xzf "$RUNNER_TEMP/$f" -C "$RUNNER_TEMP/hugo" hugo
+          echo "$RUNNER_TEMP/hugo" >> "$GITHUB_PATH"
+      - id: pages
+        uses: actions/configure-pages@v5
+      - name: Build (drafts and future posts are never built)
+        run: hugo --minify --gc --panicOnWarning --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Guard - no trackers in output
+        run: |
+          if grep -rIlE "googletagmanager|google-analytics|gtag\(|disqus|plausible|matomo" public; then
+            echo "tracker string found in build output" >&2; exit 1
+          fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

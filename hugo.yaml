@@ -1,0 +1,49 @@
+baseURL: "https://salamancerai.github.io/"
+languageCode: en-us
+title: SalamancerAI
+theme: PaperMod
+copyright: "© SalamancerAI. All rights reserved."
+timeZone: UTC
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableGitInfo: false
+summaryLength: 40
+
+# No analytics, comments or third-party services are configured, on purpose.
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: false   # raw HTML in posts is dropped, so no embeds can sneak in
+  highlight:
+    noClasses: false
+
+menu:
+  main:
+    - {identifier: posts, name: Posts, url: /posts/, weight: 10}
+    - {identifier: tags, name: Tags, url: /tags/, weight: 20}
+    - {identifier: about, name: About, url: /about/, weight: 30}
+
+params:
+  author: SalamancerAI
+  description: "Learning journals from a human-directed, AI-assisted workshop."
+  defaultTheme: auto
+  disableThemeToggle: false
+  ShowReadingTime: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: false
+  ShowCodeCopyButtons: false
+  ShowShareButtons: false
+  ShowToc: false
+  hideFooter: false
+  footer:
+    text: "Written by a human, with AI help. I decide the topics and the conclusions, draft with AI assistance (Claude, from Anthropic), and edit everything myself. Nothing is published that I haven't read and approved. Any images are AI-generated and selected by me."
+  homeInfoParams:
+    Title: "SalamancerAI"
+    Content: "Learning journals from a human-directed, AI-assisted workshop."
+  socialIcons:
+    - {name: github, url: "https://github.com/salamancerAI"}
+  assets:
+    favicon: /favicon.svg

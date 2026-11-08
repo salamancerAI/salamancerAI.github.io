@@ -1,0 +1,9 @@
+{{- /* Accessibility guard: every image needs alt text, or the build fails. Images must be self-hosted (no remote URLs). */ -}}
+{{- $alt := trim .Text " " -}}
+{{- if not $alt -}}
+  {{- errorf "Image %q (in %s) has no alt text" .Destination .Page.File.Path -}}
+{{- end -}}
+{{- if findRE `^(https?:)?//` .Destination -}}
+  {{- errorf "Image %q (in %s) is remote; images must be self-hosted under static/images/" .Destination .Page.File.Path -}}
+{{- end -}}
+<img loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ $alt }}" {{ with .Title }}title="{{ . }}" {{ end }}/>
