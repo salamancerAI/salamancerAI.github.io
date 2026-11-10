@@ -16,8 +16,8 @@ concurrency:
 
 env:
   # Pinned Hugo (extended). Both values MUST be set; the build refuses to run on placeholders.
-  HUGO_VERSION: "UNSET"
-  HUGO_SHA256: "UNSET"
+  HUGO_VERSION: "0.169.0"
+  HUGO_SHA256: "c41672a0725d307758a132bc94a962e59760eb33f9ba08c991b81f9881d6fa7d"
 
 jobs:
   build:

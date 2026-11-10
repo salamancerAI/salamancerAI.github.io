@@ -1,5 +1,5 @@
 baseURL: "https://salamancerai.github.io/"
-languageCode: en-us
+locale: en-US
 title: SalamancerAI
 theme: PaperMod
 copyright: "© SalamancerAI. All rights reserved."
