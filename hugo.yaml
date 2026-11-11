@@ -36,6 +36,7 @@ params:
   ShowBreadCrumbs: false
   ShowCodeCopyButtons: false
   ShowShareButtons: false
+  ShowFullTextinRSS: true
   ShowToc: false
   hideFooter: false
   footer:

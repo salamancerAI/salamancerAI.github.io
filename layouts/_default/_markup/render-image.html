@@ -6,4 +6,4 @@
 {{- if findRE `^(https?:)?//` .Destination -}}
   {{- errorf "Image %q (in %s) is remote; images must be self-hosted under static/images/" .Destination .Page.File.Path -}}
 {{- end -}}
-<img loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ $alt }}" {{ with .Title }}title="{{ . }}" {{ end }}/>
+<img loading="lazy" src="{{ .Destination | absURL | safeURL }}" alt="{{ $alt }}" {{ with .Title }}title="{{ . }}" {{ end }}/>

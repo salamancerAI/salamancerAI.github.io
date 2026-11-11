@@ -31,7 +31,7 @@ This is a working learning journal for my side projects. I write things down as 
 
 ## The project
 
-I sell stickers through a print-on-demand shop (RedBubble) under the name Skempies. [Skempies on RedBubble](https://www.redbubble.com/people/Skempies/shop) The brand look is "rad, 90s, comic-book, a little weird." The first collection was Halloween. The second is Skate Park Punks: ugly-cute monsters (a one-eyed brute, a vampire punk, a skeleton skater, a mushroom, a robot, and more) riding skateboards.
+I sell stickers through a print-on-demand shop (RedBubble) under the name Skempies. [See the shop.](https://www.redbubble.com/people/Skempies/shop) The brand look is "rad, 90s, comic-book, a little weird." The first collection was Halloween. The second is Skate Park Punks: ugly-cute monsters (a one-eyed brute, a vampire punk, a skeleton skater, a mushroom, a robot, and more) riding skateboards.
 
 The first batch of Skate Park Punks looked fine, but every character stood on a board in roughly the same stiff pose. I wanted action: ollies, flips, grinds.
 
@@ -195,6 +195,8 @@ If you've worked on any of these, I'd be grateful for a comment or a message:
 - **Filtering duds automatically.** My vision-model scorer was useless. What do people use to pre-filter large batches before a human looks?
 - **Print-on-demand tips.** Do identical or near-identical titles hurt visibility? How many tags and which tag styles matter in practice?
 - **Sanity-checking for lookalikes.** How do you check that a design doesn't resemble an existing character, without relying on a weak automatic judge?
+
+Got advice or a correction? Open an issue on the [blog's GitHub repo](https://github.com/salamancerAI/salamancerAI.github.io/issues) or find me on [Dev.to](https://dev.to/salamancerai).
 
 ## What's next
 
